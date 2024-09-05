@@ -1,7 +1,4 @@
-﻿using Grasshopper.GUI;
-using Grasshopper.GUI.Canvas;
-using Grasshopper.Kernel;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace CustomGrip
 {
@@ -25,7 +22,7 @@ namespace CustomGrip
             GripSweepAngle = sweepAngle;
         }
 
-        public virtual void DrawGrip(Graphics graphics, float zoom)
+        public virtual void DrawGrip(Graphics graphics)
         {
             Rectangle bounds = new Rectangle(new Point(((int)Position.X), ((int)Position.Y)), new Size(10, 10));
             bounds.Offset(-bounds.Width / 2, -bounds.Height / 2);

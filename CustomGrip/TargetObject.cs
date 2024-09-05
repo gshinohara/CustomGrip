@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace CustomGrip
 {
-    public abstract class TargetObject<T>
+    public abstract class TargetObject<TObject, TConnectedGrip> where TConnectedGrip : Grip
     {
-        public T Owner { get; }
+        public TObject Owner { get; }
 
-        public TargetObject(T owner)
+        public TConnectedGrip ConnectedGrip { get; }
+
+        public TargetObject(TObject owner, TConnectedGrip connectedGrip)
         {
             Owner = owner;
+            ConnectedGrip = connectedGrip;
         }
 
         public abstract RectangleF GetBounds();

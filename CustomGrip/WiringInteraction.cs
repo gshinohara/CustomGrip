@@ -1,47 +1,50 @@
-﻿using Grasshopper.Documentation;
+﻿using Grasshopper.GUI;
 using Grasshopper.GUI.Canvas;
-using Grasshopper.GUI;
-using Grasshopper;
-using Grasshopper.GUI.Canvas.Interaction;
-using Grasshopper.Kernel;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CustomGrip
 {
-    internal class WiringInteraction : GH_AbstractInteraction
+    internal class WiringInteraction<TTarget> : BaseInteraction<TTarget>
     {
-        private enum LinkMode
+        public WiringInteraction(GH_Canvas canvas, GH_CanvasMouseEvent mouseEvent, WiringObjectInputGrip<TTarget> sourceGrip) : base(canvas, mouseEvent, sourceGrip)
         {
-            Replace,
-            Add,
-            Remove
+            canvas.CanvasPrePaintWires += PaintWire;
         }
 
-        private LinkMode m_mode;
-
-        private PointF m_MouseLocation;
-
-        public WiringInteraction(GH_Canvas canvas, GH_CanvasMouseEvent mouseEvent) : base(canvas, mouseEvent)
+        public override GH_ObjectResponse RespondToMouseUp(GH_Canvas sender, GH_CanvasMouseEvent e)
         {
-            m_mode = LinkMode.Replace;
-            m_MouseLocation = PointF.Empty;
-            canvas.CanvasPostPaintObjects += Canvas_CanvasPostPaintObjects;
-            Instances.CursorServer.AttachCursor(canvas, "GH_NewWire");
+            if (e.Button == MouseButtons.Left)
+            {
+                sender.ActiveInteraction = null;
+            }
+
+            return base.RespondToMouseUp(sender, e);
         }
 
         public override void Destroy()
         {
-            m_canvas.CanvasPostPaintObjects -= Canvas_CanvasPostPaintObjects;
+            m_canvas.CanvasPrePaintWires -= PaintWire;
             base.Destroy();
         }
 
-        private void Canvas_CanvasPostPaintObjects(GH_Canvas sender)
+        private void PaintWire(GH_Canvas sender)
         {
+            Color color = Color.Empty;
+            switch (m_mode)
+            {
+                case LinkMode.Replace:
+                    color = Color.DarkGray;
+                    break;
+                case LinkMode.Add:
+                    color = Color.Green;
+                    break;
+                case LinkMode.Remove:
+                    color = Color.Red;
+                    break;
+            }
+
+            Util.DrawWire(SourceGrip, new FloatingMouseGrip { Position = sender.CursorCanvasPosition, Direction = SourceGrip.TargetDirection }, sender.Graphics, color);
         }
     }
 }
