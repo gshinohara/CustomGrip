@@ -4,8 +4,9 @@ using System.Drawing;
 namespace CustomGrip
 {
     public abstract class WiringObjectInputGrip<TTarget> : Grip
+          where TTarget : ITargetObject
     {
-        public List<TargetObject<TTarget, WiringObjectInputGrip<TTarget>>> TargetObjects { get; } = new List<TargetObject<TTarget, WiringObjectInputGrip<TTarget>>>();
+        public List<TTarget> TargetObjects { get; } = new List<TTarget>();
 
         public WiringObjectAttributes<TTarget> Parent { get; }
 
@@ -19,7 +20,7 @@ namespace CustomGrip
 
         public void DrawWireToTarget(Graphics graphics, Color color)
         {
-            foreach (TargetObject<TTarget, WiringObjectInputGrip<TTarget>> target in TargetObjects)
+            foreach (TTarget target in TargetObjects)
                 Util.DrawWire(this, target.GetGrip(), graphics, color);
         }
     }

@@ -8,9 +8,8 @@ using System.Linq;
 namespace CustomGrip
 {
     public abstract class WiringObjectAttributes<TTarget> : GH_Attributes<WiringObject<TTarget>>
+          where TTarget : ITargetObject
     {
-        private LinkMode m_Mode;
-
         public List<WiringObjectInputGrip<TTarget>> MyInputGrips { get; } = new List<WiringObjectInputGrip<TTarget>>();
 
         public WiringObjectAttributes(WiringObject<TTarget> owner) : base(owner)
@@ -39,7 +38,11 @@ namespace CustomGrip
                     break;
                 case GH_CanvasChannel.Objects:
                     foreach (WiringObjectInputGrip<TTarget> inputGrip in MyInputGrips)
+                    {
                         inputGrip.DrawGrip(graphics);
+                        foreach (TTarget target in inputGrip.TargetObjects)
+                            target.DrawTarget(graphics);
+                    }
                     break;
             }
         }

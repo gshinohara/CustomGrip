@@ -6,8 +6,20 @@ using System.Windows.Forms;
 
 namespace CustomGrip
 {
+    /// <summary>
+    /// This basic class of the wire interaction sets the cursor mode and style.
+    /// </summary>
+    /// <typeparam name="TTarget">Class of wiring targets.</typeparam>
     internal abstract class BaseInteraction<TTarget> : GH_AbstractInteraction
+          where TTarget : ITargetObject
     {
+        protected enum LinkMode
+        {
+            Replace,
+            Add,
+            Remove
+        }
+
         protected LinkMode m_mode = LinkMode.Replace;
 
         protected WiringObjectInputGrip<TTarget> SourceGrip { get; }

@@ -4,6 +4,7 @@ using Grasshopper.GUI.Canvas;
 namespace CustomGrip
 {
     internal class CursorAproachingInteraction<TTarget> : BaseInteraction<TTarget>
+          where TTarget : ITargetObject
     {
         public CursorAproachingInteraction(GH_Canvas canvas, GH_CanvasMouseEvent e, WiringObjectInputGrip<TTarget> sourceGrip) : base(canvas, e, sourceGrip)
         {
