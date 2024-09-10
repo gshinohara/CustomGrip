@@ -1,9 +1,11 @@
-﻿using Grasshopper.GUI;
+﻿using CustomGrip.Grips;
+using CustomGrip.Targets;
+using Grasshopper.GUI;
 using Grasshopper.GUI.Canvas;
 using System.Drawing;
 using System.Linq;
 
-namespace CustomGrip
+namespace CustomGrip.Interactions
 {
     internal class WiringInteraction<TTarget> : BaseInteraction<TTarget>
           where TTarget : ITargetObject

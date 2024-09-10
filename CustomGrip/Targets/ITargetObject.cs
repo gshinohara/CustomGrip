@@ -1,4 +1,6 @@
-﻿namespace CustomGrip
+﻿using CustomGrip.Grips;
+
+namespace CustomGrip.Targets
 {
     public interface ITargetObject
     {

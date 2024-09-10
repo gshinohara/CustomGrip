@@ -1,7 +1,9 @@
-﻿using Grasshopper.GUI;
+﻿using CustomGrip.Grips;
+using CustomGrip.Targets;
+using Grasshopper.GUI;
 using Grasshopper.GUI.Canvas;
 
-namespace CustomGrip
+namespace CustomGrip.Interactions
 {
     internal class CursorAproachingInteraction<TTarget> : BaseInteraction<TTarget>
           where TTarget : ITargetObject

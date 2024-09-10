@@ -1,6 +1,7 @@
-﻿using Grasshopper.Kernel;
+﻿using CustomGrip.Targets;
+using Grasshopper.Kernel;
 
-namespace CustomGrip
+namespace CustomGrip.Sources
 {
     public abstract class WiringObject<TTarget> : GH_DocumentObject
         where TTarget : ITargetObject

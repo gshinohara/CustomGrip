@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CustomGrip
+namespace CustomGrip.Targets
 {
     /// <summary>
     /// Collection class of target objects.
@@ -33,7 +33,7 @@ namespace CustomGrip
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this.GetEnumerator();
+            return GetEnumerator();
         }
     }
 }

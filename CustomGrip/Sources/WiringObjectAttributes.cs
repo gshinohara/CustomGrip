@@ -1,11 +1,14 @@
-﻿using Grasshopper.GUI;
+﻿using CustomGrip.Grips;
+using CustomGrip.Interactions;
+using CustomGrip.Targets;
+using Grasshopper.GUI;
 using Grasshopper.GUI.Canvas;
 using Grasshopper.Kernel;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
-namespace CustomGrip
+namespace CustomGrip.Sources
 {
     public abstract class WiringObjectAttributes<TTarget> : GH_Attributes<WiringObject<TTarget>>
           where TTarget : ITargetObject

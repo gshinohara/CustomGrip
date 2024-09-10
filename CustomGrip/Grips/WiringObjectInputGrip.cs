@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using CustomGrip.Sources;
+using CustomGrip.Targets;
+using System.Collections.Generic;
 using System.Drawing;
 
-namespace CustomGrip
+namespace CustomGrip.Grips
 {
     public abstract class WiringObjectInputGrip<TTarget> : Grip
           where TTarget : ITargetObject

@@ -1,10 +1,12 @@
-﻿using Grasshopper;
+﻿using CustomGrip.Grips;
+using CustomGrip.Targets;
+using Grasshopper;
 using Grasshopper.GUI;
 using Grasshopper.GUI.Canvas;
 using Grasshopper.GUI.Canvas.Interaction;
 using System.Windows.Forms;
 
-namespace CustomGrip
+namespace CustomGrip.Interactions
 {
     /// <summary>
     /// This basic class of the wire interaction sets the cursor mode and style.

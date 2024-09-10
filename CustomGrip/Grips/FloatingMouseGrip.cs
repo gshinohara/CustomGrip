@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace CustomGrip
+namespace CustomGrip.Grips
 {
     internal class FloatingMouseGrip : Grip
     {

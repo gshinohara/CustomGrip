@@ -1,9 +1,9 @@
-﻿using Grasshopper.GUI;
+﻿using CustomGrip.Grips;
 using Grasshopper.GUI.Canvas;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace CustomGrip
+namespace CustomGrip.Targets
 {
     /// <summary>
     /// Wire target.
@@ -32,7 +32,7 @@ namespace CustomGrip
         {
             GetGrip().DrawGrip(graphics);
             GraphicsPath path = GH_CapsuleRenderEngine.CreateRoundedRectangle(GetBounds(), 2);
-            graphics.DrawPath(new Pen(Color.Orange, 4) { Alignment = PenAlignment.Outset}, path);
+            graphics.DrawPath(new Pen(Color.Orange, 4) { Alignment = PenAlignment.Outset }, path);
         }
     }
 }
