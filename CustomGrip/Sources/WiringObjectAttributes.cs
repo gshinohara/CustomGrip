@@ -31,8 +31,6 @@ namespace CustomGrip.Sources
 
         protected override void Render(GH_Canvas canvas, Graphics graphics, GH_CanvasChannel channel)
         {
-            base.Render(canvas, graphics, channel);
-
             switch (channel)
             {
                 case GH_CanvasChannel.Wires:
