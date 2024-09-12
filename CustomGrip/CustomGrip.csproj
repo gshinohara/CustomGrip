@@ -60,14 +60,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Grip.cs" />
+    <Compile Include="Grips\FloatingMouseGrip.cs" />
+    <Compile Include="Grips\Grip.cs" />
+    <Compile Include="Grips\WiringObjectInputGrip.cs" />
+    <Compile Include="Interactions\BaseInteraction.cs" />
+    <Compile Include="Interactions\CursorAproachingInteraction.cs" />
+    <Compile Include="Interactions\WiringInteraction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TargetObject.cs" />
-    <Compile Include="WiringInteraction.cs" />
-    <Compile Include="WiringObjectInputGrip.cs" />
+    <Compile Include="Sources\WiringObject.cs" />
+    <Compile Include="Sources\WiringObjectAttributes.cs" />
+    <Compile Include="Targets\ITargetObject.cs" />
+    <Compile Include="Targets\TargetCollection.cs" />
+    <Compile Include="Targets\TargetObject.cs" />
     <Compile Include="Util.cs" />
-    <Compile Include="WiringObject.cs" />
-    <Compile Include="WiringObjectAttributes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
