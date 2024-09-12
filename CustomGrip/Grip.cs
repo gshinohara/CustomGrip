@@ -1,6 +1,9 @@
-﻿using System.Drawing;
+﻿using Grasshopper.GUI;
+using Grasshopper.GUI.Canvas;
+using Grasshopper.Kernel;
+using System.Drawing;
 
-namespace CustomGrip.Grips
+namespace CustomGrip
 {
     public abstract class Grip
     {
@@ -12,19 +15,19 @@ namespace CustomGrip.Grips
 
         public SizeF Direction { get; set; }
 
-        public float GripStartAngle { get; }
+        public float GripStartAngle {  get; }
 
         public float GripSweepAngle { get; }
 
-        public Grip(float startAngle, float sweepAngle)
+        public Grip(float startAngle,float sweepAngle)
         {
             GripStartAngle = startAngle;
             GripSweepAngle = sweepAngle;
         }
 
-        public virtual void DrawGrip(Graphics graphics)
+        public virtual void DrawGrip(Graphics graphics, float zoom)
         {
-            Rectangle bounds = new Rectangle(new Point((int)Position.X, (int)Position.Y), new Size(10, 10));
+            Rectangle bounds = new Rectangle(new Point(((int)Position.X), ((int)Position.Y)), new Size(10, 10));
             bounds.Offset(-bounds.Width / 2, -bounds.Height / 2);
             graphics.FillPie(new SolidBrush(Color.White), bounds, GripStartAngle, GripSweepAngle);
             graphics.DrawPie(new Pen(Color.Black, 2), bounds, GripStartAngle, GripSweepAngle);
